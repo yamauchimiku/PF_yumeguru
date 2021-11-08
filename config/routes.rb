@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
+    #ルートパスの設定
+  root to:'homes#top'
+  get'about'=>'homes#about'
+
+    #ネストする
+  resources:post_images do
+    resource:favorites,only:[:create,:destroy]
+    resource:post_comments,only:[:create,:destroy]
+  end
+
+  resources:users,only:[:show,:edit,:update]
 end
