@@ -9,8 +9,49 @@
       <p>投稿日 <%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
         <!--一致した場合のみ表示-->
         <% if @post_image.user == current_user %>
-          <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+          <!--確認画面表示-->
+          <%= link_to "削除", post_image_path(@post_image), method: :delete, data: { confirm: '本当に削除しますか?' } %>
           <%= link_to "編集", edit_post_image_path(@post_image) %>
         <% end %>
+        <!--post_imageモデルで実装したメゾット-->
+        <!--自分（ログインしているユーザ）が含まれるとき-->
+        <% if @post_image.favorited_by?(current_user) %>
+          <p>
+            <%= link_to post_image_favorites_path(@post_image), method: :delete do %>
+              ♥<%= @post_image.favorites.count %>
+            <% end %>
+          </p>
+          <!--自分（ログインしているユーザ）が含まれないとき-->
+          <% else %>
+          <p>
+            <%= link_to post_image_favorites_path(@post_image), method: :post do %>
+              ♡<%= @post_image.favorites.count %>
+            <% end %>
+          </p>
+        <% end %>
     </div>
+</div>
+
+<div class="container">
+  <!--post_imageに結びついてる-->
+  <p><%= @post_image.post_comments.count %>件のコメント</p>
+    <% @post_image.post_comments.each do |post_comment| %>
+      <%= post_comment.user.name %>
+      <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+      <%= post_comment.comment %>
+      <% if post_comment.user_id == current_user.id %>
+        <div>
+          <!--idを二つ指定-->
+          <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+<div class="container">
+  <!--配列でインスタンス変数を2つ指定-->
+  <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
+  　<!--text_areaの高さを行数で指定-->
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
 </div>

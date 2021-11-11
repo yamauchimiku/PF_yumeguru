@@ -13,6 +13,9 @@
         <% end %>
         <p>コメント <%= post_image.caption %></p>
         <p>名前 <%= post_image.user.name %></p>
+        <!--式展開-->
+        <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
+        <p><%= link_to "#{post_image.favorites.count} いいね", post_image_path(post_image.id) %></p>
       </div>
     <% end %>
 </div>
