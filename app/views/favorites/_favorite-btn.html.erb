@@ -1,0 +1,14 @@
+<!--post_imageモデルで実装したメゾット-->
+<!--自分（ログインしているユーザ）が含まれるとき-->
+<% if post_image.favorited_by?(current_user) %>
+  <p>
+  <!--非同期通信でremote: true追加-->
+  <%= link_to post_image.favorites.count, post_image_favorites_path(post_image), method: :delete, remote: true, class: "fas fa-heart heart_red" %>
+  </p>
+<!--自分（ログインしているユーザ）が含まれないとき-->
+<% else %>
+  <p>
+  <!--非同期通信でremote: true追加-->
+  <%= link_to post_image.favorites.count, post_image_favorites_path(post_image), method: :post, remote: true, class: "fas fa-heart heart_red" %>
+  </p>
+<% end %>

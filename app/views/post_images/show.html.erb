@@ -1,7 +1,7 @@
 <div class="container">
   <h2>➡ NEW.POST</h2>
   <p>いいね、コメントを残そう。</p>
-    <div>
+    <div id="post_image_<%= @post_image.id %>">
       <%= attachment_image_tag @post_image, :image %>
       <p>温泉名 <%= @post_image.post_name %></p>
       <p>コメント <%= @post_image.caption %></p>
@@ -13,22 +13,7 @@
           <%= link_to "削除", post_image_path(@post_image), method: :delete, data: { confirm: '本当に削除しますか?' } %>
           <%= link_to "編集", edit_post_image_path(@post_image) %>
         <% end %>
-        <!--post_imageモデルで実装したメゾット-->
-        <!--自分（ログインしているユーザ）が含まれるとき-->
-        <% if @post_image.favorited_by?(current_user) %>
-          <p>
-            <%= link_to post_image_favorites_path(@post_image), method: :delete do %>
-              ♥<%= @post_image.favorites.count %>
-            <% end %>
-          </p>
-          <!--自分（ログインしているユーザ）が含まれないとき-->
-          <% else %>
-          <p>
-            <%= link_to post_image_favorites_path(@post_image), method: :post do %>
-              ♡<%= @post_image.favorites.count %>
-            <% end %>
-          </p>
-        <% end %>
+      <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: @post_image %></p>
     </div>
 </div>
 
