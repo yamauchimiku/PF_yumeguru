@@ -18,4 +18,6 @@
         <p><%= link_to "︎✐#{post_image.post_comments.count} ", post_image_path(post_image.id) %></p>
       </div>
     <% end %>
+    <!--ページャの実装-->
+    <%= paginate @post_images %>
 </div>

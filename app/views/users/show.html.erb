@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>➡ MY PAGE</h2>
+  <p>『　ゆ　め　ぐ　る　』で心も体もあたたまろう。</p>
+    <% @post_images.each do |post_image| %>
+      <div id="post_image_<%= post_image.id %>">
+        <!--詳細ページのリンク-->
+        <%= link_to post_image_path(post_image.id) do %>
+          <%= attachment_image_tag post_image, :image %>
+        <% end %>
+        <!--詳細ページのリンク-->
+        <%= link_to post_image_path(post_image.id) do %>
+          <p>温泉名 <%= post_image.post_name %></p>
+        <% end %>
+        <p>コメント <%= post_image.caption %></p>
+        <p>名前 <%= post_image.user.name %></p>
+        <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: post_image %></p>
+         <!--式展開-->
+        <p><%= link_to "︎✐#{post_image.post_comments.count} ", post_image_path(post_image.id) %></p>
+      </div>
+    <% end %>
+    <!--ページャの実装-->
+    <%= paginate @post_images %>
+</div>
