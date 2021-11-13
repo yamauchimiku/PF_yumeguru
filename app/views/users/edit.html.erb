@@ -1,0 +1,16 @@
+ <div class="container">
+  <h2>➡ PROFIEL.UPDATE</h2>
+  <p>プロフィールを更新しよう。</p>
+    <h4>プロフィール編集</h4>
+      <%= form_with model:@user, local:true do |f| %>
+        <label for="inputName">名前</label>
+        <!--text_fieldで、nameカラムを変更できるようにする-->
+        <%= f.text_field :name, class: "form-control name" %>
+        <label for="user_introduction">自己紹介</label><br>
+        <%= f.text_field :introduction %>
+        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60 %>
+        <label for="inputImage"></label>
+        <%= f.attachment_field :profile_image %>
+        <%= f.submit "UPDATE" %>
+      <% end %>
+</div>

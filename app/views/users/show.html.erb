@@ -13,6 +13,7 @@
         <% end %>
         <p>コメント <%= post_image.caption %></p>
         <p>名前 <%= post_image.user.name %></p>
+        <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60 %>
         <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: post_image %></p>
          <!--式展開-->
         <p><%= link_to "︎✐#{post_image.post_comments.count} ", post_image_path(post_image.id) %></p>
@@ -20,4 +21,15 @@
     <% end %>
     <!--ページャの実装-->
     <%= paginate @post_images %>
+</div>
+
+<div class="container">
+  <h4>名前<%= @user.name %></h4>
+  <h4>自己紹介<%= @user.introduction %></h4>
+  <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg' %>
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+
+
 </div>

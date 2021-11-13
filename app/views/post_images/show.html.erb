@@ -6,6 +6,7 @@
       <p>温泉名 <%= @post_image.post_name %></p>
       <p>コメント <%= @post_image.caption %></p>
       <p>名前 <%= @post_image.user.name %></p>
+      <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60 %>
       <p>投稿日 <%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
         <!--一致した場合のみ表示-->
         <% if @post_image.user == current_user %>
