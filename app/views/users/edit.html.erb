@@ -5,7 +5,7 @@
       <%= form_with model:@user, local:true do |f| %>
         <label for="inputName">名前</label>
         <!--text_fieldで、nameカラムを変更できるようにする-->
-        <%= f.text_field :name, class: "form-control name" %>
+        <%= f.text_field :name %>
         <label for="user_introduction">自己紹介</label><br>
         <%= f.text_field :introduction %>
         <%= attachment_image_tag @user, :profile_image, :fill, 60, 60 %>
