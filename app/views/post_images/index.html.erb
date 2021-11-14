@@ -2,7 +2,7 @@
   <h2>➡ POST.LIST</h2>
   <p>あなたの行きたい『　ゆ　』をみつけよう。</p>
     <% @post_images.each do |post_image| %>
-      <div id="post_image_<%= post_image.id %>">
+      <div>
         <!--詳細ページのリンク-->
         <%= link_to post_image_path(post_image.id) do %>
           <%= attachment_image_tag post_image, :image %>
@@ -20,7 +20,9 @@
         <%= link_to user_path(post_image.user) do %>
           <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60 %>
         <% end %>
+        <div id="post_image_<%= post_image.id %>">
         <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: post_image %></p>
+        </div>
          <!--式展開-->
         <p><%= link_to "︎✐#{post_image.post_comments.count} ", post_image_path(post_image.id) %></p>
       </div>
