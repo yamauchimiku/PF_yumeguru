@@ -40,6 +40,7 @@ class PostImagesController < ApplicationController
   # 投稿データのストロングパラメータ
   private
   def  post_image_params
-    params.require(:post_image).permit(:post_name,:caption,:image)
+    # 複数の画像idになるため、配列[]で渡す
+    params.require(:post_image).permit(:post_name, :caption, onsen_images_images: [])
   end
 end

@@ -2,7 +2,11 @@
   <h2>➡ NEW.POST</h2>
   <p>いいね、コメントを残そう。</p>
     <div>
-      <%= attachment_image_tag @post_image, :image %>
+      <% if @post_image.onsen_images.present? %>
+          <% @post_image.onsen_images.each do |image| %>
+            <%= attachment_image_tag image, :image %>
+          <% end %>
+      <% end %>
       <p>温泉名 <%= @post_image.post_name %></p>
       <p>コメント <%= @post_image.caption %></p>
       <!--ユーザー詳細画面へのリンク-->

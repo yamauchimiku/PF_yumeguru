@@ -3,9 +3,10 @@
   <p>『　ゆ　め　ぐ　る　』で心も体もあたたまろう。</p>
     <% @post_images.each do |post_image| %>
       <div id="post_image_<%= post_image.id %>">
-        <!--詳細ページのリンク-->
-        <%= link_to post_image_path(post_image.id) do %>
-          <%= attachment_image_tag post_image, :image %>
+        <% if post_image.onsen_images.present? %>
+          <% post_image.onsen_images.each do |image| %>
+            <%= attachment_image_tag image, :image %>
+          <% end %>
         <% end %>
         <!--詳細ページのリンク-->
         <%= link_to post_image_path(post_image.id) do %>

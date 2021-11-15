@@ -2,8 +2,10 @@ class PostImage < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :onsen_images, dependent: :destroy
+
   # refile画像アップ用のメゾットを追加
-  attachment :image
+  accepts_attachments_for :onsen_images, attachment: :image
 
   # ユーザidがfavoritesテーブル内に存在するかを調べる
   def favorited_by?(user)
