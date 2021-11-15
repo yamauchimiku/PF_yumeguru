@@ -48,14 +48,6 @@
               </li>
             <% end %>
           </ul>
-          　<!--検索バー-->
-          　<!--searchコントローラーに記載-->
-            <%= form_tag(search_path, method: :get) do %>
-              <%= text_field_tag 'content' %>
-              <%= select_tag 'model', options_for_select({ "User" => "ユーザー名", "PostImage" => "温泉名" }) %>
-              <%= select_tag 'method', options_for_select({ "完全一致" => "perfect","前方一致" => "forward_match", "後方一致" => "backward_match", "部分一致" => "partial" }) %>
-              <%= submit_tag 'SEARCH' %>
-        　　<% end %>
         </div>
       </div>
     </nav>
