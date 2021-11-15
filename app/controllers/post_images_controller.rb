@@ -5,7 +5,7 @@ class PostImagesController < ApplicationController
 
   def  create
     @post_image = PostImage.new(post_image_params)
-  # deviseのヘルパーメゾット
+    # deviseのヘルパーメゾット
     @post_image.user_id = current_user.id
     @post_image.save
     redirect_to post_images_path
@@ -13,7 +13,7 @@ class PostImagesController < ApplicationController
 
   def  index
     # 一ページ分の決められた数のデータだけを、新しい順に取得するように変更
-    @post_images= PostImage.page(params[:page]).reverse_order
+    @post_images = PostImage.page(params[:page]).reverse_order
   end
 
   def  show

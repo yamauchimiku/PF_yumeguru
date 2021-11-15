@@ -20,6 +20,8 @@
           <%= link_to "削除", post_image_path(@post_image), method: :delete, data: { confirm: '本当に削除しますか?' } %>
           <%= link_to "編集", edit_post_image_path(@post_image) %>
         <% end %>
+      <!--idを付与-->
+      <!--いいねした投稿に対応するいいねボタンを特定-->
       <div id="post_image_<%= @post_image.id %>">
       <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: @post_image %>
       <div>

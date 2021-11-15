@@ -21,6 +21,7 @@
         <!--idを付与-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
+            <!--ログイン後-->
             <% if user_signed_in? %>
               <li class="nav-item">
                 <%= link_to "HOME", post_images_path,class:"nav-link active" %>
@@ -35,6 +36,7 @@
                 <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class:"nav-link active" %>
               </li>
             <% else %>
+            　<!--ログイン前-->
               <li class="nav-item">
                 <%= link_to "SIGN UP", new_user_registration_path, class:"nav-link active" %>
               </li>
@@ -46,6 +48,14 @@
               </li>
             <% end %>
           </ul>
+          　<!--検索バー-->
+          　<!--searchコントローラーに記載-->
+            <%= form_tag(search_path, method: :get) do %>
+              <%= text_field_tag 'content' %>
+              <%= select_tag 'model', options_for_select({ "User" => "ユーザー名", "PostImage" => "温泉名" }) %>
+              <%= select_tag 'method', options_for_select({ "完全一致" => "perfect","前方一致" => "forward_match", "後方一致" => "backward_match", "部分一致" => "partial" }) %>
+              <%= submit_tag 'SEARCH' %>
+        　　<% end %>
         </div>
       </div>
     </nav>

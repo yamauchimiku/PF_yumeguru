@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources:users,only:[:show,:edit,:update]
+
+  # 検索機能のルーティング
+  get'search'=>'searches#search'
 end

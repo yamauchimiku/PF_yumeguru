@@ -20,6 +20,8 @@
         <%= link_to user_path(post_image.user) do %>
           <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60 %>
         <% end %>
+        <!--idを付与-->
+        <!--いいねした投稿に対応するいいねボタンを特定-->
         <div id="post_image_<%= post_image.id %>">
         <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: post_image %></p>
         </div>

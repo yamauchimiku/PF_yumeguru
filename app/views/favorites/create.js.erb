@@ -1,1 +1,4 @@
+<!--createアクション内で定義された@post_image-->
+<!--@post_image.idを埋め込む-->
+<!--idがpost_imageの要素の中の、favorite-btnクラスの要素-->
 $("#post_image_<%= @post_image.id %>").html("<%= j(render 'favorites/favorite-btn', post_image:@post_image ) %>");
