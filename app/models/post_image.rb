@@ -8,7 +8,9 @@ class PostImage < ApplicationRecord
   accepts_attachments_for :onsen_images, attachment: :image
 
   # バリデーション
-  validates :post_name, presence: true
+  # 空でないか、最大文字数の指定
+  validates :post_name, presence: true, length: { maximum: 30 }
+  validates :caption, presence: true, length: { maximum: 200 }
 
   # ユーザidがfavoritesテーブル内に存在するかを調べる
   def favorited_by?(user)
