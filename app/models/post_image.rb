@@ -7,6 +7,9 @@ class PostImage < ApplicationRecord
   # refile画像アップ用のメゾットを追加
   accepts_attachments_for :onsen_images, attachment: :image
 
+  # バリデーション
+  validates :post_name, presence: true
+
   # ユーザidがfavoritesテーブル内に存在するかを調べる
   def favorited_by?(user)
     # モデルをid以外の条件で検索する場合、whereを使用

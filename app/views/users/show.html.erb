@@ -2,7 +2,8 @@
   <h2>➡ MY PAGE</h2>
   <p>『　ゆ　め　ぐ　る　』で心も体もあたたまろう。</p>
     <% @post_images.each do |post_image| %>
-      <div id="post_image_<%= post_image.id %>">
+      <div>
+        <!--複数枚のためeachで取り出す-->
         <% if post_image.onsen_images.present? %>
           <% post_image.onsen_images.each do |image| %>
             <%= attachment_image_tag image, :image %>
@@ -15,8 +16,12 @@
         <p>コメント <%= post_image.caption %></p>
         <p>名前 <%= post_image.user.name %></p>
         <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, format: 'jpeg' %>
+        <!--idを付与-->
+        <!--いいねした投稿に対応するいいねボタンを特定-->
+        <div id="post_image_<%= post_image.id %>">
         <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: post_image %></p>
-         <!--式展開-->
+        </div>
+        <!--式展開-->
         <p><%= link_to "︎✐#{post_image.post_comments.count} ", post_image_path(post_image.id) %></p>
       </div>
     <% end %>

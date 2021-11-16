@@ -7,8 +7,12 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     # deviseのヘルパーメゾット
     @post_image.user_id = current_user.id
-    @post_image.save
-    redirect_to post_images_path
+    # バリデーションの結果を表示
+    if@post_image.save
+      redirect_to post_images_path
+    else
+      render :new
+    end
   end
 
   def  index
@@ -40,6 +44,7 @@ class PostImagesController < ApplicationController
   # 投稿データのストロングパラメータ
   private
   def  post_image_params
+    # 画像データを保持しているのはonsen_images
     # 複数の画像idになるため、配列[]で渡す
     params.require(:post_image).permit(:post_name, :caption, onsen_images_images: [])
   end

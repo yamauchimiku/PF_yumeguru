@@ -2,6 +2,7 @@
   <h2>➡ NEW.POST</h2>
   <p>いいね、コメントを残そう。</p>
     <div>
+      <!--複数枚のためeachで取り出す-->
       <% if @post_image.onsen_images.present? %>
           <% @post_image.onsen_images.each do |image| %>
             <%= attachment_image_tag image, :image %>

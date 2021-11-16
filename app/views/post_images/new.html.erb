@@ -1,17 +1,25 @@
 <div class="container">
   <h2>➡ NEW.POST</h2>
   <p>『　ゆ　め　ぐ　る　』記録をつけよう。</p>
-    <h3>画像投稿フォーム</h3>
-      <%= form_with model: @post_image, local:true do |f| %>
-        <h5>画像を選択</h5>
-        <!--idを除いた名前を指定-->
-        <%= f.attachment_field :onsen_images_images, multiple: true%>
-        <h5>温泉名</h5>
-        <%= f.text_field :post_name %>
-        <h5>コメント</h5>
-        <%= f.text_area :caption, placeholder: "コメントをここに"%></br>
-        <%= f.submit 'NEW POST' %>
+    <!--エラーメッセージの表示-->
+    <% if @post_image.errors.any? %>
+      <%= @post_image.errors.count %>errors prohibited this obj from being saved:
+      <% @post_image.errors.full_messages.each do |message| %>
+      <%= message %>
       <% end %>
+    <% end %>
+      <h3>画像投稿フォーム</h3>
+        <%= form_with model: @post_image, local:true do |f| %>
+          <h5>画像を選択</h5>
+          <!--idを除いた名前を指定-->
+          <!--複数枚の時はmultiple: trueを追加-->
+          <%= f.attachment_field :onsen_images_images, multiple: true%>
+          <h5>温泉名</h5>
+          <%= f.text_field :post_name %>
+          <h5>コメント</h5>
+          <%= f.text_area :caption, placeholder: "コメントをここに"%></br>
+          <%= f.submit 'NEW POST' %>
+        <% end %>
 </div>
 
 

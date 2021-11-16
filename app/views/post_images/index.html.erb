@@ -3,6 +3,7 @@
   <p>あなたの行きたい『　ゆ　』をみつけよう。</p>
     <% @post_images.each do |post_image| %>
       <div>
+        <!--複数枚のためeachで取り出す-->
         <% if post_image.onsen_images.present? %>
           <% post_image.onsen_images.each do |image| %>
             <%= attachment_image_tag image, :image %>
