@@ -24,16 +24,16 @@
             <!--ログイン後-->
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "HOME", post_images_path,class:"nav-link active" %>
+                <%= link_to "HOME", post_images_path, class:"nav-link active" %>
               </li>
               <li class="nav-item">
-                <%= link_to "NEW POST", new_post_image_path,class:"nav-link active" %>
+                <%= link_to "NEW POST", new_post_image_path, class:"nav-link active" %>
               </li>
               <li class="nav-item">
-                <%= link_to "MY PAGE", user_path(current_user.id),class:"nav-link active" %>
+                <%= link_to "MY PAGE", user_path(current_user.id), class:"nav-link active" %>
               </li>
               <li class="nav-item">
-                <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class:"nav-link active" %>
+                <%= link_to "LOG OUT", destroy_user_session_path, method: :delete, data: { confirm: 'Do you really want to log out ?' }, class:"nav-link active" %>
               </li>
             <% else %>
             　<!--ログイン前-->

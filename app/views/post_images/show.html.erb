@@ -1,4 +1,5 @@
 <div class="container">
+  <%= flash[:notice] %>
   <h2>➡ NEW.POST</h2>
   <p>いいね、コメントを残そう。</p>
     <div>
@@ -22,7 +23,7 @@
         <!--一致した場合のみ表示-->
         <% if @post_image.user == current_user %>
           <!--確認画面表示-->
-          <%= link_to "削除", post_image_path(@post_image), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+          <%= link_to "削除", post_image_path(@post_image), method: :delete, data: { confirm: 'Do you really want to delete this ?' } %>
           <%= link_to "編集", edit_post_image_path(@post_image) %>
         <% end %>
       <!--idを付与-->
