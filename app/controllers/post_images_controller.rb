@@ -8,7 +8,7 @@ class PostImagesController < ApplicationController
     # deviseのヘルパーメゾット
     @post_image.user_id = current_user.id
     # バリデーションの結果を表示
-    if@post_image.save
+    if  @post_image.save
       flash[:notice] = 'You have created post successfully!!'
       redirect_to post_images_path
     else
@@ -32,9 +32,12 @@ class PostImagesController < ApplicationController
 
   def  update
     @post_image = PostImage.find(params[:id])
-    @post_image.update(post_image_params)
-    flash[:notice] = 'You have updated post successfully!!'
-    redirect_to post_image_path(@post_image.id)
+    if  @post_image.update(post_image_params)
+      flash[:notice] = 'You have updated post successfully!!'
+      redirect_to post_image_path(@post_image.id)
+    else
+      render :edit
+    end
   end
 
   def  destroy

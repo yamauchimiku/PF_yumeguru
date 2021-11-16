@@ -10,4 +10,10 @@ class User < ApplicationRecord
 
   #refile画像アップ用のメゾット追加
   attachment :profile_image
+
+  # バリデーション
+  # 一意性を持たせる、範囲指定
+  validates :name, length: { in: 2..20 }, uniqueness: true
+  # 最大文字数の指定
+  validates :introduction, length: { maximum: 50 }
 end
