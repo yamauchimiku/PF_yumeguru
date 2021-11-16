@@ -23,7 +23,7 @@
         <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: post_image %></p>
         </div>
         <!--式展開-->
-        <p><%= link_to "︎✐#{post_image.post_comments.count} ", post_image_path(post_image.id) %></p>
+        <p><%= link_to "#{post_image.post_comments.count} ", post_image_path(post_image.id), class: "fas fa-comment-dots text-dark" %></p>
       </div>
     <% end %>
     <!--ページャの実装-->

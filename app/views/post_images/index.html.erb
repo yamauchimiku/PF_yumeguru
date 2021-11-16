@@ -14,7 +14,7 @@
         <%= link_to post_image_path(post_image.id) do %>
           <p>温泉名 <%= post_image.post_name %></p>
         <% end %>
-        <p>コメント <%= post_image.caption %></p>
+          <p><%= post_image.caption %></p>
         <!--ユーザー詳細画面へのリンク-->
         <%= link_to user_path(post_image.user) do %>
           <p>名前 <%= post_image.user.name %></p>
@@ -29,7 +29,7 @@
         <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: post_image %></p>
         </div>
          <!--式展開-->
-        <p><%= link_to "︎✐#{post_image.post_comments.count} ", post_image_path(post_image.id) %></p>
+        <p><%= link_to "#{post_image.post_comments.count} ", post_image_path(post_image.id), class: "fas fa-comment-dots text-dark" %></p>
       </div>
     <% end %>
     <!--ページャの実装-->
