@@ -1,9 +1,16 @@
-<div class="container">
-  <h3>『　ゆ　め　ぐ　る　』　へ　よ　う　こ　そ　。</h3>
+<div class="container mb-5">
+  <div class="text-center">
+    <h3>『　ゆ　め　ぐ　る　』　へ　よ　う　こ　そ　。</h3>
+    </br>
+    </br>
     <p>はじめての方はサインアップ</br>
+    </br>
        登録済みの方はログインから
+    </br>
+    </br>
     </p>
 
-  <span><%=link_to "SIGN UP", new_user_registration_path%></span> |
-  <span><%=link_to "LOG IN", new_user_session_path%></span>
+    <span><%=link_to "SIGN UP", new_user_registration_path, class:"text-dark" %></span> |
+    <span><%=link_to "LOG IN", new_user_session_path, class:"text-dark" %></span>
+  </div>
 </div>
