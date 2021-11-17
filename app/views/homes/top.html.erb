@@ -1,10 +1,13 @@
+<!--上下に空白-->
 <div class="container text-center my-5 ">
   <!--スライドショー-->
   <!--idは任意の名前-->
   <div class="carousel slide" id="hoge" data-ride="carousel">
   <ol class="carousel-indicators">
     <!--インディケーター-->
-    <!--画像の枚数分-->
+    <!--画像の枚数分記載、0から数える-->
+    <!--idを指定-->
+    <!--先頭にactiveを付与-->
     <li data-target="#hoge" data-slide-to="0" class="active"></li>
     <li data-target="#hoge" data-slide-to="1"></li>
     <li data-target="#hoge" data-slide-to="2"></li>
@@ -12,16 +15,19 @@
   </ol>
   <div class="carousel-inner">
     <!--画像部分-->
+    <!--先頭にactiveを付与-->
     <div class="carousel-item active"><%= image_tag 'top1.jpg', width: "100%", height: "60%" %></div>
     <div class="carousel-item"><%= image_tag 'top2.jpg', width: "100%", height: "60%" %></div>
     <div class="carousel-item"><%= image_tag 'top3.jpg', width: "100%", height: "60%" %></div>
     <div class="carousel-item"><%= image_tag 'top4.jpg', width: "100%", height: "60%" %></div>
   </div>
   <!-- 画像遷移のボタン-->
+  <!--前の画像-->
   <a href="#hoge" class="carousel-control-prev" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
     <span class="sr-only"></span>
   </a>
+  <!--次の画像-->
   <a href="#hoge" class="carousel-control-next" data-slide="next">
       <span class="carousel-control-next-icon"></span>
       <span class="sr-only"></span>
