@@ -19,27 +19,27 @@
     <div class="row text-center">
       <div class="col-lg-3"></div>
       <div class="col-lg-6 border border-info rounded bg-light">
-      </br>
-      <h1>画像投稿フォーム</h1></br>
-      </br>
-      </br>
-        <%= form_with model: @post_image, local:true do |f| %>
-          <!--idを除いた名前を指定-->
-          <!--複数枚の時はmultiple: trueを追加-->
-          <%= f.attachment_field :onsen_images_images, multiple: true%></br>
-          </br>
-          </br>
-          <%= f.text_field :post_name, placeholder: "温泉名"%></br>
-          </br>
-          </br>
-          <%= f.text_area :caption, placeholder: "コメントをここに", rows:'5'%></br>
-          </br>
-          </br>
-          <%= f.submit "NEW POST", class: "bg-secondary text-white btn radius-pixel-30" %>
-        <% end %>
         </br>
-        </div>
-        <div class="col-lg-3"></div>
+        <h1>画像投稿フォーム</h1></br>
+        </br>
+        </br>
+          <%= form_with model: @post_image, local:true do |f| %>
+            <!--idを除いた名前を指定-->
+            <!--複数枚の時はmultiple: trueを追加-->
+            <%= f.attachment_field :onsen_images_images, multiple: true%></br>
+            </br>
+            </br>
+            <%= f.text_field :post_name, placeholder: "温泉名"%></br>
+            </br>
+            </br>
+            <%= f.text_area :caption, placeholder: "コメントをここに", rows:'5'%></br>
+            </br>
+            </br>
+            <%= f.submit "NEW POST", class: "bg-secondary text-white btn radius-pixel-30" %>
+          <% end %>
+        </br>
+      </div>
+      <div class="col-lg-3"></div>
     </div>
 </div>
 

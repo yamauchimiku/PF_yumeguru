@@ -1,6 +1,13 @@
- <div class="container">
-  <h2>➡ PROFIEL.UPDATE</h2>
-  <p>プロフィールを更新しよう。</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-6 text-secondary">
+      <h2>➡ PROFIEL.UPDATE</h2>
+    </div>
+    <div class="col-lg-6">
+      <p>プロフィールを更新しよう。</p>
+    </div>
+  </div>
+</div>
     <!--エラーメッセージの表示-->
     <% if @user.errors.any? %>
       <%= @user.errors.count %>error prohibited this obj from being saved:
@@ -8,16 +15,33 @@
       <%= message %>
       <% end %>
     <% end %>
-      <h4>プロフィール編集</h4>
-        <%= form_with model:@user, local:true do |f| %>
-          <label for="inputName">名前</label>
-          <!--text_fieldで、nameカラムを変更できるようにする-->
-          <%= f.text_field :name %>
-          <label for="user_introduction">自己紹介</label><br>
-          <%= f.text_field :introduction %>
-          <%= attachment_image_tag @user, :profile_image, :fill, 60, 60 %>
-          <label for="inputImage"></label>
-          <%= f.attachment_field :profile_image %>
-          <%= f.submit "UPDATE" %>
-        <% end %>
+<div class="container text-center mb-5">
+    <div class="row text-center">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6 border border-info rounded bg-light">
+        </br>
+        <h1>プロフィール編集</h1>
+        </br>
+        </br>
+          <%= form_with model:@user, local:true do |f| %>
+            <label for="inputName"></label>
+            <!--text_fieldで、nameカラムを変更できるようにする-->
+            <%= f.text_field :name %>
+            </br>
+            </br>
+            <label for="user_introduction"></label><br>
+            <%= f.text_field :introduction %>
+            </br>
+            </br>
+            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, class: "rounded-circle" %>
+            <label for="inputImage"></label>
+            <%= f.attachment_field :profile_image %>
+            </br>
+            </br>
+            <%= f.submit "UPDATE", class: "bg-secondary text-white btn radius-pixel-30" %>
+          <% end %>
+          </br>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
 </div>
