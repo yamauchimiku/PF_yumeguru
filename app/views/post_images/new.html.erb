@@ -1,6 +1,13 @@
-<div class="container">
-  <h2>➡ NEW.POST</h2>
-  <p>『　ゆ　め　ぐ　る　』記録をつけよう。</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-6 text-secondary">
+      <h2>➡ NEW.POST</h2>
+    </div>
+    <div class="col-lg-6">
+      <p>『　ゆ　め　ぐ　る　』記録をつけよう。</p>
+    </div>
+  </div>
+</div>
     <!--エラーメッセージの表示-->
     <% if @post_image.errors.any? %>
       <%= @post_image.errors.count %>errors prohibited this obj from being saved:
@@ -8,18 +15,32 @@
       <%= message %>
       <% end %>
     <% end %>
-      <h3>画像投稿フォーム</h3>
+<div class="container text-center mb-5">
+    <div class="row text-center">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6 border border-info rounded bg-light">
+      </br>
+      <h1>画像投稿フォーム</h1></br>
+      </br>
+      </br>
         <%= form_with model: @post_image, local:true do |f| %>
-          <h5>画像を選択</h5>
           <!--idを除いた名前を指定-->
           <!--複数枚の時はmultiple: trueを追加-->
-          <%= f.attachment_field :onsen_images_images, multiple: true%>
-          <h5>温泉名</h5>
-          <%= f.text_field :post_name %>
-          <h5>コメント</h5>
-          <%= f.text_area :caption, placeholder: "コメントをここに"%></br>
-          <%= f.submit 'NEW POST' %>
+          <%= f.attachment_field :onsen_images_images, multiple: true%></br>
+          </br>
+          </br>
+          <%= f.text_field :post_name, placeholder: "温泉名"%></br>
+          </br>
+          </br>
+          <%= f.text_area :caption, placeholder: "コメントをここに", rows:'5'%></br>
+          </br>
+          </br>
+          <%= f.submit "NEW POST", class: "bg-secondary text-white btn radius-pixel-30" %>
         <% end %>
+        </br>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
 </div>
 
 

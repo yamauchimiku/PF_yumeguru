@@ -1,59 +1,75 @@
-<div class="container">
+<div class="container my-5">
   <%= flash[:notice] %>
-  <h2>➡ NEW.POST</h2>
-  <p>いいね、コメントを残そう。</p>
-    <div>
+    <div class="row">
+      <div class="col-lg-6 text-secondary">
+        <h2>➡ POST.DETAIL</h2>
+      </div>
+      <div class="col-lg-6">
+        <p>いいね、コメントを残そう。</p>
+      <div>
+    </div>
+</div>
+<div class="card-list-container w-75">
+  <div class="card mx-auto my-5">
       <!--複数枚のためeachで取り出す-->
       <% if @post_image.onsen_images.present? %>
           <% @post_image.onsen_images.each do |image| %>
             <%= attachment_image_tag image, :image %>
           <% end %>
       <% end %>
-      <p>温泉名 <%= @post_image.post_name %></p>
-      <p>コメント <%= @post_image.caption %></p>
-      <!--ユーザー詳細画面へのリンク-->
-      <%= link_to user_path(@post_image.user) do %>
-        <p>名前 <%= @post_image.user.name %></p>
-      <% end %>
-      <!--ユーザー詳細画面へのリンク-->
-      <%= link_to user_path(@post_image.user) do %>
-        <%= attachment_image_tag @post_image.user, :profile_image, :fill, 60, 60 %>
-      <% end %>
-      <p>投稿日 <%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-3 px-5">
+        <!--ユーザー詳細画面へのリンク-->
+        <%= link_to user_path(@post_image.user) do %>
+          <%= attachment_image_tag @post_image.user, :profile_image, :fill, 100, 100,class: "rounded-circle pb-3" %>
+        <% end %>
+        <!--ユーザー詳細画面へのリンク-->
+        <%= link_to user_path(@post_image.user) do %>
+          <p class="text-secondary"><%= @post_image.user.name %></p>
+        <% end %>
+      </div>
+      <div class="col-lg-9 pl-5">
+        <p class= "fas fa-hot-tub text-dark fa-lg fa-border"><%= @post_image.post_name %></p>
+        <p><%= @post_image.caption %></p>
+        </br>
+        <p class="fas fa-calendar-day text-secondary"><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+        <!--idを付与-->
+        <!--いいねした投稿に対応するいいねボタンを特定-->
+        <div id="post_image_<%= @post_image.id %>">
+        <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: @post_image %>
         <!--一致した場合のみ表示-->
         <% if @post_image.user == current_user %>
           <!--確認画面表示-->
-          <%= link_to "削除", post_image_path(@post_image), method: :delete, data: { confirm: 'Do you really want to delete this ?' } %>
-          <%= link_to "編集", edit_post_image_path(@post_image) %>
+          <%= link_to "削除", post_image_path(@post_image), method: :delete, data: { confirm: 'Do you really want to delete this ?' }, class: "text-danger" %>|
+          <%= link_to "編集", edit_post_image_path(@post_image), class: "text-info" %>
         <% end %>
-      <!--idを付与-->
-      <!--いいねした投稿に対応するいいねボタンを特定-->
-      <div id="post_image_<%= @post_image.id %>">
-      <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: @post_image %>
-      <div>
+        <div>
+      </div>
     </div>
+  </div>
+  </div>
 </div>
 
-<div class="container">
+<div class="container mb-5">
   <!--post_imageに結びついてる-->
   <p><%= @post_image.post_comments.count %>件のコメント</p>
     <% @post_image.post_comments.each do |post_comment| %>
-      <%= post_comment.user.name %>
-      <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+      <p class="text-secondary"><%= post_comment.user.name %></p>
+      <p class="fas fa-calendar-day text-secondary"><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
       <%= post_comment.comment %>
       <% if post_comment.user_id == current_user.id %>
         <div>
           <!--idを二つ指定-->
-          <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+          <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, data: { confirm: 'Do you really want to delete this ?' }, class: "text-danger"%>
         </div>
       <% end %>
     <% end %>
-</div>
-<div class="container">
   <!--配列でインスタンス変数を2つ指定-->
   <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
   　<!--text_areaの高さを行数で指定-->
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
+    <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに", class: "form-control" %>
+    </br>
+    <%= f.submit "送信する",class: "bg-secondary text-white btn radius-pixel-30" %>
   <% end %>
 </div>

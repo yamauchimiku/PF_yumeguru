@@ -1,35 +1,51 @@
-<div class="container">
+<div class="container my-5">
   <%= flash[:notice] %>
-  <h2>➡ POST.LIST</h2>
-  <p>あなたの行きたい『　ゆ　』をみつけよう。</p>
+    <div class="row">
+      <div class="col-lg-6 text-secondary">
+        <h2>➡ POST.LIST</h2>
+      </div>
+      <div class="col-lg-6">
+      <p>あなたの行きたい『　ゆ　』をみつけよう。</p>
+      </div>
+    </div>
+</div>
+<div class="card-list-container">
     <% @post_images.each do |post_image| %>
-      <div>
+      <div class="card w-50 mx-auto my-5">
         <!--複数枚のためeachで取り出す-->
         <% if post_image.onsen_images.present? %>
           <% post_image.onsen_images.each do |image| %>
-            <%= attachment_image_tag image, :image %>
+            <%= attachment_image_tag image, :image, class: "card-img-top img-thumbnail" %>
           <% end %>
         <% end %>
-        <!--詳細ページのリンク-->
-        <%= link_to post_image_path(post_image.id) do %>
-          <p>温泉名 <%= post_image.post_name %></p>
-        <% end %>
-          <p><%= post_image.caption %></p>
-        <!--ユーザー詳細画面へのリンク-->
-        <%= link_to user_path(post_image.user) do %>
-          <p>名前 <%= post_image.user.name %></p>
-        <% end %>
-        <!--ユーザー詳細画面へのリンク-->
-        <%= link_to user_path(post_image.user) do %>
-          <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60 %>
-        <% end %>
-        <!--idを付与-->
-        <!--いいねした投稿に対応するいいねボタンを特定-->
-        <div id="post_image_<%= post_image.id %>">
-        <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: post_image %></p>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-3 px-5">
+            <!--ユーザー詳細画面へのリンク-->
+            <%= link_to user_path(post_image.user) do %>
+              <%= attachment_image_tag post_image.user, :profile_image, :fill, 100, 100,class: "rounded-circle pb-3"%>
+            <% end %>
+            <!--ユーザー詳細画面へのリンク-->
+            <%= link_to user_path(post_image.user) do %>
+              <p class="text-secondary"><%= post_image.user.name %></p>
+            <% end %>
+          </div>
+          <div class="col-lg-9 pl-5">
+          <!--詳細ページのリンク-->
+          <%= link_to post_image_path(post_image.id) do %>
+            <p class= "fas fa-hot-tub text-dark fa-lg fa-border"> <%= post_image.post_name %></p>
+          <% end %>
+            <p><%= post_image.caption %></p>
+          <!--idを付与-->
+          <!--いいねした投稿に対応するいいねボタンを特定-->
+          <div id="post_image_<%= post_image.id %>">
+          <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: post_image %></p>
+          </div>
+           <!--式展開-->
+          <p><%= link_to "#{post_image.post_comments.count} ", post_image_path(post_image.id), class: "fas fa-comment-dots text-info fa-lg" %></p>
+          </div>
         </div>
-         <!--式展開-->
-        <p><%= link_to "#{post_image.post_comments.count} ", post_image_path(post_image.id), class: "fas fa-comment-dots text-dark" %></p>
+      </div>
       </div>
     <% end %>
     <!--ページャの実装-->
