@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # ログイン認証されていなければ、ログイン画面へリダイレクトする
   # topとaboutを除く
-  before_action :authenticate_user!,except: [:top,:about]
+  before_action :authenticate_user!, except: [:top, :about]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)

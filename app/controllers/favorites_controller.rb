@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  def  create
+  def create
     # @を付与
     @post_image = PostImage.find(params[:post_image_id])
     # idを二つ指定

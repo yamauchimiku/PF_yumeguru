@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
-  #refile画像アップ用のメゾット追加
+  # refile画像アップ用のメゾット追加
   attachment :profile_image
 
   # バリデーション
