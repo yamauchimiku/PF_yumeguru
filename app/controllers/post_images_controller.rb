@@ -5,8 +5,6 @@ class PostImagesController < ApplicationController
 
   def create
     @post_image = PostImage.new(post_image_params)
-    # pry-byebugの使用
-    binding.pry
     # deviseのヘルパーメゾット
     @post_image.user_id = current_user.id
     # バリデーションの結果を表示
