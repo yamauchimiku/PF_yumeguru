@@ -7,8 +7,15 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     # deviseのヘルパーメゾット
     @post_image.user_id = current_user.id
+    @is_images = 0
     # バリデーションの結果を表示
-    if @post_image.save
+    # 画像が選択されていない時の条件分岐
+    if params[:post_image][:onsen_images_images].size <= 1
+      @post_image.valid?
+      # 画像が選択されていなかった場合
+      @is_images = 1
+      render :new
+    elsif @post_image.save
       flash[:notice] = 'You have created post successfully!!'
       redirect_to post_images_path
     else
@@ -32,12 +39,21 @@ class PostImagesController < ApplicationController
 
   def update
     @post_image = PostImage.find(params[:id])
-    if @post_image.update(post_image_params)
+    @is_images = 0
+    # バリデーションの結果を表示
+    # 画像が選択されていない時の条件分岐
+    if params[:post_image][:onsen_images_images].size <= 1
+      @post_image.valid?
+      # 画像が選択されていなかった場合
+      @is_images = 1
+      render :edit
+    elsif @post_image.update(post_image_params)
       flash[:notice] = 'You have updated post successfully!!'
       redirect_to post_image_path(@post_image.id)
     else
       render :edit
     end
+
   end
 
   def destroy

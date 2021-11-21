@@ -8,13 +8,21 @@
     </div>
   </div>
 </div>
+
     <!--エラーメッセージの表示-->
     <% if @user.errors.any? %>
-      <%= @user.errors.count %>error prohibited this obj from being saved:
-      <% @user.errors.full_messages.each do |message| %>
-      <%= message %>
-      <% end %>
+      <p class="ml-5 text-danger">
+        <%= @user.errors.count %>error prohibited this obj from being saved:
+      </p>
+      <ul class="ml-5">
+        <% @user.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+        <% end %>
+      </p>
     <% end %>
+
 <div class="container text-center mb-5">
     <div class="row text-center">
       <div class="col-lg-3"></div>

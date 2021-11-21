@@ -8,13 +8,30 @@
     </div>
   </div>
 </div>
+
     <!--エラーメッセージの表示-->
-    <% if @post_image.errors.any? %>
-      <%= @post_image.errors.count %>errors prohibited this obj from being saved:
-      <% @post_image.errors.full_messages.each do |message| %>
-      <%= message %>
-      <% end %>
+    <!--画像が選択されていない時もしくは、@post_image.errorsがある時-->
+    <% if  @is_images == 1 || @post_image.errors.any? %>
+      <p class="ml-5 text-danger">
+        <!--@is_imagesをカウントに足す-->
+        <%= @post_image.errors.count + @is_images %>errors prohibited this obj from being saved:
+      </p>
+      <ul class="ml-5">
+        <!--@post_image.errorsのエラーメッセージを全て表示-->
+        <% @post_image.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+        <% end %>
+        <!--画像が選択されていない時のエラーメッセージを表示-->
+        <% if @is_images == 1 %>
+          <li>
+            Please, select any images.
+          </li>
+        <% end %>
+      </ul>
     <% end %>
+
 <div class="container text-center mb-5">
     <div class="row text-center">
       <div class="col-lg-3"></div>
