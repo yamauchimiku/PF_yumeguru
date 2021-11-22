@@ -16,7 +16,7 @@ class PostImagesController < ApplicationController
       @is_images = 1
       render :new
     elsif @post_image.save
-      flash[:notice] = 'You have created post successfully!!'
+      flash[:notice] = 'You have created post successfully.'
       redirect_to post_images_path
     else
       render :new
@@ -48,7 +48,7 @@ class PostImagesController < ApplicationController
       @is_images = 1
       render :edit
     elsif @post_image.update(post_image_params)
-      flash[:notice] = 'You have updated post successfully!!'
+      flash[:notice] = 'You have updated post successfully.'
       redirect_to post_image_path(@post_image.id)
     else
       render :edit

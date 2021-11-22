@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <%= flash[:notice] %>
+  <p class="my-5 text-info"><%= flash[:notice] %></p>
     <div class="row">
       <div class="col-lg-6 text-secondary">
         <h2>➡ POST.DETAIL</h2>
@@ -38,14 +38,14 @@
         <!--idを付与-->
         <!--いいねした投稿に対応するいいねボタンを特定-->
         <div id="post_image_<%= @post_image.id %>">
-        <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: @post_image %>
+        <p class="favorite-btn" ><%= render "favorites/favorite-btn", post_image: @post_image %></p>
+        </div>
         <!--一致した場合のみ表示-->
         <% if @post_image.user == current_user %>
           <!--確認画面表示-->
           <%= link_to "削除", post_image_path(@post_image), method: :delete, data: { confirm: 'Do you really want to delete this ?' }, class: "text-danger" %>|
           <%= link_to "編集", edit_post_image_path(@post_image), class: "text-info" %>
         <% end %>
-        <div>
       </div>
     </div>
   </div>
