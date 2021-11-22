@@ -15,7 +15,7 @@
       <!--複数枚のためeachで取り出す-->
       <% if @post_image.onsen_images.present? %>
           <% @post_image.onsen_images.each do |image| %>
-            <%= attachment_image_tag image, :image %>
+            <%= attachment_image_tag image, :image, class: "card-img-top img-thumbnail" %>
           <% end %>
       <% end %>
   <div class="card-body">
