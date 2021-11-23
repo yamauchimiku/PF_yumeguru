@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Kosugi+Maru&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -39,13 +39,13 @@
             <% else %>
             　<!--ログイン前-->
               <li class="nav-item">
-                <%= link_to "SIGN UP", new_user_registration_path, class:"nav-link active mx-5 border-bottom h4" %>
+                <%= link_to "SIGN UP", new_user_registration_path, class:"nav-link active mx-5 border-bottom h3" %>
               </li>
               <li class="nav-item">
-                <%= link_to "LOG IN", new_user_session_path, class:"nav-link active mx-5 border-bottom h4" %>
+                <%= link_to "LOG IN", new_user_session_path, class:"nav-link active mx-5 border-bottom h3" %>
               </li>
               <li class="nav-item">
-                <%= link_to "ABOUT", about_path, class:"nav-link active mx-5 border-bottom h4" %>
+                <%= link_to "ABOUT", about_path, class:"nav-link active mx-5 border-bottom h3" %>
               </li>
             <% end %>
           </ul>
