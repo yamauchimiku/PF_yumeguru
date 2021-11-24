@@ -5,7 +5,7 @@
         </br>
         </br>
         </br>
-        <h1>LOG IN</h1></br>
+        <p class="h1 text-secondary">LOG IN</p></br>
 
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
           <div class="field">
@@ -26,7 +26,7 @@
           <% end %>
 
           <div class="actions mt-5">
-            <%= f.submit "LOG IN",class: "bg-secondary text-white btn radius-pixel-30" %>
+            <%= f.submit "LOG IN",class: "h1 bg-secondary text-white btn radius-pixel-30" %>
           </div>
         <% end %>
 

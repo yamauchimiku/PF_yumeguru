@@ -5,7 +5,7 @@
         </br>
         </br>
         </br>
-        <h1>SIGN UP</h1></br>
+        <p class="h1 text-secondary">SIGN UP</p></br>
 
         <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
@@ -31,7 +31,7 @@
           </div></br>
 
           <div class="actions mt-5">
-            <%= f.submit "SIGN UP",class: "bg-secondary text-white btn radius-pixel-30" %>
+            <%= f.submit "SIGN UP",class: "h1 bg-secondary text-white btn radius-pixel-30" %>
           </div>
         <% end %>
         </br>

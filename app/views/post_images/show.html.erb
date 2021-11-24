@@ -1,11 +1,10 @@
 <div class="container my-5">
-  <p class="my-5 text-info"><%= flash[:notice] %></p>
+  <p class="my-5 h5 text-info"><%= flash[:notice] %></p>
     <div class="row">
-      <div class="col-lg-6 text-secondary">
-        <h2>➡ POST.DETAIL</h2>
+      <div class="col-lg-6 h2 text-secondary">
+        <p>>> POST.DETAIL</p>
       </div>
       <div class="col-lg-6">
-        <p>いいね、コメントを残そう。</p>
       <div>
     </div>
 </div>
@@ -34,7 +33,7 @@
         <p class= "fas fa-hot-tub text-dark fa-lg fa-border"><%= @post_image.post_name %></p>
         <p><%= @post_image.caption %></p>
         </br>
-        <p class="fas fa-calendar-day text-secondary"><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+        <p class="h5 text-secondary"><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
         <!--idを付与-->
         <!--いいねした投稿に対応するいいねボタンを特定-->
         <div id="post_image_<%= @post_image.id %>">
@@ -43,8 +42,8 @@
         <!--一致した場合のみ表示-->
         <% if @post_image.user == current_user %>
           <!--確認画面表示-->
-          <%= link_to "削除", post_image_path(@post_image), method: :delete, data: { confirm: 'Do you really want to delete this ?' }, class: "text-danger" %>|
-          <%= link_to "編集", edit_post_image_path(@post_image), class: "text-info" %>
+          <%= link_to "''DELETE''", post_image_path(@post_image), method: :delete, data: { confirm: 'Do you really want to delete this ?' }, class: "h5 text-danger" %> or
+          <%= link_to "''EDIT''", edit_post_image_path(@post_image), class: "h5 text-info" %>
         <% end %>
       </div>
     </div>
@@ -54,15 +53,15 @@
 
 <div class="container mb-5">
   <!--post_imageに結びついてる-->
-  <p><%= @post_image.post_comments.count %>件のコメント</p>
+  <p class="h5 border-bottom"><%= @post_image.post_comments.count %>件のコメント</p>
     <% @post_image.post_comments.each do |post_comment| %>
       <p class="text-secondary"><%= post_comment.user.name %></p>
-      <p class="fas fa-calendar-day text-secondary"><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
+      <p class="h5 text-secondary"><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
       <%= post_comment.comment %>
       <% if post_comment.user_id == current_user.id %>
         <div>
           <!--idを二つ指定-->
-          <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, data: { confirm: 'Do you really want to delete this ?' }, class: "text-danger"%>
+          <%= link_to "''DELETE''", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, data: { confirm: 'Do you really want to delete this ?' }, class: "h5 text-danger"%>
         </div>
       <% end %>
     <% end %>
@@ -71,6 +70,6 @@
   　<!--text_areaの高さを行数で指定-->
     <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに", class: "form-control" %>
     </br>
-    <%= f.submit "送信する",class: "bg-secondary text-white btn radius-pixel-30" %>
+    <%= f.submit "SUBMIT",class: "h1 bg-secondary text-white btn radius-pixel-30" %>
   <% end %>
 </div>

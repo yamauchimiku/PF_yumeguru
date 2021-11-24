@@ -1,44 +1,43 @@
 <div class="container my-5">
-  <div class="row">
-    <div class="col-lg-6 text-secondary">
-      <h2>➡ NEW.POST</h2>
+  <!--エラーメッセージの表示-->
+  <!--画像が選択されていない時もしくは、@post_image.errorsがある時-->
+  <% if  @is_images == 1 || @post_image.errors.any? %>
+    <p class="h5 ml-5 text-danger">
+      <!--@is_imagesをカウントに足す-->
+      <%= @post_image.errors.count + @is_images %>errors prohibited this obj from being saved.
+    </p>
+    <ul class="h5 ml-5">
+      <!--@post_image.errorsのエラーメッセージを全て表示-->
+      <% @post_image.errors.full_messages.each do |message| %>
+      <li>
+        <%= message %>
+      </li>
+      <% end %>
+      <!--画像が選択されていない時のエラーメッセージを表示-->
+      <% if @is_images == 1 %>
+        <li>
+          Please, select any images
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="row mt-5">
+    <div class="col-lg-6 h2 text-secondary">
+      <p>>> NEW.POST</p>
     </div>
     <div class="col-lg-6">
-      <p>『　ゆ　め　ぐ　る　』記録をつけよう。</p>
     </div>
   </div>
 </div>
-
-    <!--エラーメッセージの表示-->
-    <!--画像が選択されていない時もしくは、@post_image.errorsがある時-->
-    <% if  @is_images == 1 || @post_image.errors.any? %>
-      <p class="ml-5 text-danger">
-        <!--@is_imagesをカウントに足す-->
-        <%= @post_image.errors.count + @is_images %>errors prohibited this obj from being saved:
-      </p>
-      <ul class="ml-5">
-        <!--@post_image.errorsのエラーメッセージを全て表示-->
-        <% @post_image.errors.full_messages.each do |message| %>
-        <li>
-          <%= message %>
-        </li>
-        <% end %>
-        <!--画像が選択されていない時のエラーメッセージを表示-->
-        <% if @is_images == 1 %>
-          <li>
-            Please, select any images.
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
 
 <div class="container text-center mb-5">
     <div class="row text-center">
       <div class="col-lg-3"></div>
       <div class="col-lg-6 border border-info rounded bg-light">
         </br>
-        <h2>画像投稿フォーム</h2></br>
         </br>
+        <p class="h1 text-secondary">POST FORM</p></br>
         </br>
           <%= form_with model: @post_image, local:true do |f| %>
             <!--idを除いた名前を指定-->
@@ -52,7 +51,7 @@
             <%= f.text_area :caption, placeholder: "コメントをここに", rows:'5'%></br>
             </br>
             </br>
-            <%= f.submit "NEW POST", class: "bg-secondary text-white btn radius-pixel-30" %>
+            <%= f.submit "NEW POST", class: "h1 bg-secondary text-white btn radius-pixel-30" %>
           <% end %>
         </br>
       </div>

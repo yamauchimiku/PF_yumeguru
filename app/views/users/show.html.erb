@@ -1,11 +1,10 @@
 <div class="container my-5">
-  <p class="my-5 text-info"><%= flash[:notice] %></p>
+  <p class="h5 my-5 text-info"><%= flash[:notice] %></p>
     <div class="row">
-      <div class="col-lg-6 text-secondary">
-        <h2>➡ MY PAGE</h2>
+      <div class="h2 col-lg-6 text-secondary">
+        <p>>> MY.PAGE</p>
       </div>
       <div class="col-lg-6">
-        <p>『　ゆ　め　ぐ　る　』で心も体もあたたまろう。</p>
       </div>
     </div>
 </div>
@@ -21,7 +20,7 @@
       </br>
       </br>
       <% if @user.id == current_user.id %>
-        <p><%= link_to "プロフィール編集はこちら", edit_user_path(@user), class: "text-info" %></p>
+        <p><%= link_to "''PROFIEL EDIT''", edit_user_path(@user), class: "h5 text-info" %></p>
       <% end %>
     </div>
     <div class="col-lg-6">
