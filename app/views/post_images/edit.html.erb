@@ -1,23 +1,14 @@
 <div class="container my-5">
   <!--エラーメッセージの表示-->
-  <!--画像が選択されていない時もしくは、@post_image.errorsがある時-->
-  <% if  @is_images == 1 || @post_image.errors.any? %>
+  <% if @post_image.errors.any? %>
     <p class="h5 ml-5 text-danger">
-      <!--@is_imagesをカウントに足す-->
-      <%= @post_image.errors.count + @is_images %>errors prohibited this obj from being saved.
+      <%= @post_image.errors.count %>error prohibited this obj from being saved.
     </p>
     <ul class="h5 ml-5">
-      <!--@post_image.errorsのエラーメッセージを全て表示-->
       <% @post_image.errors.full_messages.each do |message| %>
       <li>
         <%= message %>
       </li>
-      <% end %>
-      <!--画像が選択されていない時のエラーメッセージを表示-->
-      <% if @is_images == 1 %>
-        <li>
-          Please, select any images
-        </li>
       <% end %>
     </ul>
   <% end %>
@@ -43,6 +34,11 @@
           <%= form_with model: @post_image, local:true do |f| %>
             <!--idを除いた名前を指定-->
             <!--複数枚の時はmultiple: trueを追加-->
+            <% if @post_image.onsen_images.present? %>
+              <% @post_image.onsen_images.each do |image| %>
+                <%= attachment_image_tag image, :image, :fill, 50, 50 %>
+              <% end %>
+            <% end %>
             <%= f.attachment_field :onsen_images_images, multiple: true%></br>
             </br>
             </br>
