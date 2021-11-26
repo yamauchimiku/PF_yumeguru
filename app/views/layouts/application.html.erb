@@ -4,14 +4,19 @@
     <title>PfYumeguru</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!--bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--googlefont-->
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <!--javascript-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <!--ヘッダー-->
   <header>
+    <!--ナビゲーション-->
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
         <a class="navbar-brand" href="/" ><img src="<%= asset_path('logo.3.png') %>" ></a>
@@ -53,9 +58,11 @@
       </div>
     </nav>
   </header>
+  <!--メイン-->
   <main>
     <%= yield %>
   </main>
+  <!--フッター-->
   <footer class="p-4 bg-light">
     <div class="container">
   	  <div class="row">

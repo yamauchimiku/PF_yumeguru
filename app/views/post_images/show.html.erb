@@ -1,4 +1,5 @@
 <div class="container my-5">
+  <!--フラッシュメッセージの表示-->
   <p class="my-5 h5 text-info"><%= flash[:notice] %></p>
     <div class="row">
       <div class="col-lg-6 h2 text-secondary">
@@ -33,6 +34,7 @@
         <p class= "fas fa-hot-tub text-dark fa-lg fa-border"><%= @post_image.post_name %></p>
         <p><%= @post_image.caption %></p>
         </br>
+        <!--年/月/日のフォーマットへ変換-->
         <p class="h5 text-secondary"><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
         <!--idを付与-->
         <!--いいねした投稿に対応するいいねボタンを特定-->
@@ -56,20 +58,22 @@
   <p class="h5 border-bottom"><%= @post_image.post_comments.count %>件のコメント</p>
     <% @post_image.post_comments.each do |post_comment| %>
       <p class="text-secondary"><%= post_comment.user.name %></p>
+      <!--年/月/日のフォーマットへ変換-->
       <p class="h5 text-secondary"><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
       <%= post_comment.comment %>
+      <!--一致した場合のみ表示-->
       <% if post_comment.user_id == current_user.id %>
         <div>
           <!--idを二つ指定-->
-          <%= link_to "''DELETE''", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, data: { confirm: 'Do you really want to delete this ?' }, class: "h5 text-danger"%>
+          <%= link_to "''DELETE''", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, data: { confirm: 'Do you really want to delete this ?' }, class: "h5 text-danger" %>
         </div>
       <% end %>
     <% end %>
   <!--配列でインスタンス変数を2つ指定-->
   <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
   　<!--text_areaの高さを行数で指定-->
-    <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに", class: "form-control" %>
+    <%= f.text_area :comment, rows:'3', placeholder: "コメントをここに", class: "form-control" %>
     </br>
-    <%= f.submit "SUBMIT",class: "h1 bg-secondary text-white btn radius-pixel-30" %>
+    <%= f.submit "SUBMIT", class: "h1 bg-secondary text-white btn radius-pixel-30" %>
   <% end %>
 </div>

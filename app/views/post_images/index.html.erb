@@ -1,4 +1,5 @@
 <div class="container my-5">
+  <!--フラッシュメッセージの表示-->
   <p class="my-5 h5 text-info"><%= flash[:notice] %></p>
     <div class="row">
       <div class="col-lg-6 h2 text-secondary">
@@ -23,7 +24,7 @@
           <div class="col-lg-3 px-5">
             <!--ユーザー詳細画面へのリンク-->
             <%= link_to user_path(post_image.user) do %>
-              <%= attachment_image_tag post_image.user, :profile_image, :fill, 100, 100, class: "rounded-circle pb-3"%>
+              <%= attachment_image_tag post_image.user, :profile_image, :fill, 100, 100, class: "rounded-circle pb-3" %>
             <% end %>
             <!--ユーザー詳細画面へのリンク-->
             <%= link_to user_path(post_image.user) do %>

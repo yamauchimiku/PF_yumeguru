@@ -32,23 +32,24 @@
         </br>
         </br>
           <%= form_with model: @post_image, local:true do |f| %>
-            <!--idを除いた名前を指定-->
-            <!--複数枚の時はmultiple: trueを追加-->
+            <!--複数枚のためeachで取り出す-->
             <% if @post_image.onsen_images.present? %>
               <% @post_image.onsen_images.each do |image| %>
                 <%= attachment_image_tag image, :image, :fill, 50, 50 %>
               <% end %>
             <% end %>
-            <%= f.attachment_field :onsen_images_images, multiple: true%></br>
+            <!--idを除いた名前を指定-->
+            <!--複数枚の時はmultiple: trueを追加-->
+            <%= f.attachment_field :onsen_images_images, multiple: true %></br>
             </br>
             </br>
-            <%= f.text_field :post_name, placeholder: "温泉名"%></br>
+            <%= f.text_field :post_name, placeholder: "温泉名" %></br>
             </br>
             </br>
             <%= f.text_area :caption, placeholder: "コメントをここに" %></br>
             </br>
             </br>
-            <%= f.submit 'UPDATE', class: "h1 bg-secondary text-white btn radius-pixel-30"%>
+            <%= f.submit 'UPDATE', class: "h1 bg-secondary text-white btn radius-pixel-30" %>
           <% end %>
           </br>
           </br>
