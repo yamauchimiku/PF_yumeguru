@@ -16,9 +16,9 @@ class PostCommentsController < ApplicationController
     redirect_to request.referer
   end
 
+  # コメントデータのストロングパラメータ
   private
 
-  # コメントデータのストロングパラメータ
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end

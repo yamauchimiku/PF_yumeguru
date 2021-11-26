@@ -16,6 +16,7 @@ class PostImagesController < ApplicationController
       @is_images = 1
       render :new
     elsif @post_image.save
+      # フラッシュメッセージの表示
       flash[:notice] = 'You have created post successfully.'
       redirect_to post_images_path
     else
@@ -39,7 +40,9 @@ class PostImagesController < ApplicationController
 
   def update
     @post_image = PostImage.find(params[:id])
+    # バリデーションの結果を表示
     if @post_image.update(post_image_params)
+      # フラッシュメッセージの表示
       flash[:notice] = 'You have updated post successfully.'
       redirect_to post_image_path(@post_image.id)
     else
