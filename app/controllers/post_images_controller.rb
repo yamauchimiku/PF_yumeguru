@@ -36,6 +36,12 @@ class PostImagesController < ApplicationController
 
   def edit
     @post_image = PostImage.find(params[:id])
+    # 他人の投稿編集画面に推移できないようにする
+    if @post_image.user == current_user
+      render "edit"
+    else
+      redirect_to post_images_path
+    end
   end
 
   def update
