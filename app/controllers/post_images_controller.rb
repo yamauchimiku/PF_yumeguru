@@ -63,12 +63,17 @@ class PostImagesController < ApplicationController
     redirect_to post_images_path
   end
 
+  def search
+    # モデルに記載したメゾットを呼び出す
+    @post_images = PostImage.search(params[:keyword])
+  end
+
   # 投稿データのストロングパラメータ
   private
 
   def post_image_params
     # 画像データを保持しているのはonsen_images
     # 複数の画像idになるため、配列[]で渡す
-    params.require(:post_image).permit(:post_name, :caption, onsen_images_images: [])
+    params.require(:post_image).permit(:post_name, :caption, :keyword, onsen_images_images: [])
   end
 end

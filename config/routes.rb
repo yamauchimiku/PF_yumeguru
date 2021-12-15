@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   resources :post_images do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
+    # 全体のデータにアクションを利用するid付かない
+    collection do
+      get 'search'
+    end
+
   end
 
   resources :users, only: [:show, :edit, :update]
