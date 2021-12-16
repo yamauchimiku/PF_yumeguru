@@ -88,6 +88,4 @@ https://docs.google.com/spreadsheets/d/1Xy-52uu6-6T2yiItToIULw48jzuPPFTGKj6MG6lG
 
 - フレームワーク：Ruby on Rails
 
-- JSライブラリ：jQuery
-
 - IDE：Cloud9
